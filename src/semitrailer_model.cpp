@@ -1,6 +1,8 @@
 #include "vehicle_model/semitrailer_model.hpp"
 
-SemiTrailerModel::State SemiTrailerModel::stateFunction(const State& x, const Input& u)
+namespace vehicle_model
+{
+SemitrailerModel::State SemitrailerModel::stateFunction(const State& x, const Input& u)
 {
   State x_dot;
   x_dot(X) = u(V) * std::cos(x(BETA)) * (1 + param_(M) / param_(L_1) * std::tan(x(BETA)) * std::tan(u(ALPHA))) *
@@ -14,7 +16,7 @@ SemiTrailerModel::State SemiTrailerModel::stateFunction(const State& x, const In
   return x_dot;
 }
 
-SemiTrailerModel::Jacobian SemiTrailerModel::stateJacobian(const State& x, const Input& u)
+SemitrailerModel::Jacobian SemitrailerModel::stateJacobian(const State& x, const Input& u)
 {
   Jacobian A;
   A(X, X) = 0;
@@ -45,3 +47,4 @@ SemiTrailerModel::Jacobian SemiTrailerModel::stateJacobian(const State& x, const
                           param_(M) / (param_(L_1) * param_(L_2)) * std::sin(x(BETA)) * std::tan(u(ALPHA)));
   return A;
 }
+}  // namespace vehicle_model

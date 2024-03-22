@@ -2,6 +2,8 @@
 
 #include <Eigen/Dense>
 
+namespace vehicle_model
+{
 template <std::size_t num_of_states, std::size_t num_of_inputs, std::size_t num_of_params>
 class VehicleModel
 {
@@ -22,3 +24,4 @@ public:
 protected:
   Param param_;
 };
+}  // namespace vehicle_model

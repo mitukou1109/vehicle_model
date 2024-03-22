@@ -2,7 +2,9 @@
 
 #include "vehicle_model/vehicle_model.hpp"
 
-class SemiTrailerModel : public VehicleModel<4, 2, 3>
+namespace vehicle_model
+{
+class SemitrailerModel : public VehicleModel<4, 2, 3>
 {
 public:
   enum : Eigen::Index
@@ -18,11 +20,15 @@ public:
     L_2 = 2
   };
 
-  SemiTrailerModel(const Param& param) : VehicleModel(param){};
+  SemitrailerModel(const Param& param) : VehicleModel(param){};
 
-  ~SemiTrailerModel() override{};
+  SemitrailerModel(const double tractor_length, const double hitch_length, const double trailer_length)
+    : VehicleModel((Param() << tractor_length, hitch_length, trailer_length).finished()){};
+
+  ~SemitrailerModel() override{};
 
   State stateFunction(const State& x, const Input& u) override;
 
   Jacobian stateJacobian(const State& x, const Input& u) override;
 };
+}  // namespace vehicle_model
