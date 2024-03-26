@@ -29,6 +29,8 @@ public:
 
   State stateFunction(const State& x, const Input& u) override;
 
-  Jacobian stateJacobian(const State& x, const Input& u) override;
+  StateJacobian stateJacobian(const State& x, const Input& u) override;
+
+  InputJacobian inputJacobian(const State& x, const Input& u) override;
 };
 }  // namespace vehicle_model
