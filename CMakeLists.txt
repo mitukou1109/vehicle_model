@@ -7,7 +7,7 @@ endif()
 
 find_package(Eigen3 REQUIRED NO_MODULE)
 
-add_library(semitrailer_model STATIC
+add_library(semitrailer_model SHARED
   src/semitrailer_model.cpp
 )
 target_include_directories(semitrailer_model
@@ -20,7 +20,7 @@ target_include_directories(semitrailer_model
 install(
   TARGETS semitrailer_model
   EXPORT ${PROJECT_NAME}-export
-  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
   INCLUDES DESTINATION ${EIGEN3_INCLUDE_DIR}
 )
 
