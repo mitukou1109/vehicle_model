@@ -16,7 +16,7 @@ public:
 
   VehicleModel(const Param& param) : param_(param){};
 
-  virtual ~VehicleModel();
+  virtual ~VehicleModel(){};
 
   virtual State stateFunction(const State& x, const Input& u) = 0;
 

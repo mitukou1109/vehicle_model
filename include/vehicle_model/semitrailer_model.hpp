@@ -25,7 +25,7 @@ public:
   SemitrailerModel(const double tractor_length, const double hitch_length, const double trailer_length)
     : VehicleModel((Param() << tractor_length, hitch_length, trailer_length).finished()){};
 
-  ~SemitrailerModel() override{};
+  ~SemitrailerModel(){};
 
   State stateFunction(const State& x, const Input& u) override;
 
